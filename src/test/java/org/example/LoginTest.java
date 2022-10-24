@@ -4,6 +4,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -37,10 +38,12 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest(){
+    public void loginTest() throws InterruptedException {
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.inputPassword(ConfProperties.getProperty("password"));
         loginPage.clickLoginBtn();
+
+        Thread.sleep(1000);
 
         String user = profilePage.getUserName();
         Assert.assertEquals("Кузьмич Любовь Владимировна", user);

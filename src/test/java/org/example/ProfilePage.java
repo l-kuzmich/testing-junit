@@ -19,13 +19,10 @@ public class ProfilePage {
         this.driver = driver;
     }
 
-    //menu *[@id="gb"]/div[2]/div[3]/div[1]/div[2]/div/a
-    //username *[@id="yDmH0d"]/c-wiz/div/div/div/div/div[2]/div/div/div[2]/c-wiz[1]/div/div/div/div[2]/div[1]
-    ///html/body/mystat/ng-component/ng-component/div/div[3]/div[1]/top-pane/nav/div[1]/span[2]/span[1]/a
     @FindBy(xpath = "/html/body/mystat/ng-component/ng-component/div/div[3]/div[1]/top-pane/nav/div[1]/span[2]/span[1]/a")
     private WebElement userFio;
 
-    @FindBy(xpath = "//*[contains(@class, 'logout-link align-self-end')]")
+    @FindBy(xpath = "/html/body/mystat/ng-component/ng-component/div/div[3]/div[1]/top-pane/nav/div[2]/a/div")
     private WebElement logoutBtn;
 
     public String getUserName() {

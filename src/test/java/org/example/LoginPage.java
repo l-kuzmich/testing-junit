@@ -14,8 +14,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-
-
     @FindBy(xpath = "//*[contains(@id, 'username')]")
     private WebElement loginField;
 
