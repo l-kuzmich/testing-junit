@@ -17,7 +17,7 @@ public class LoginTest {
     public static WebDriver driver;
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         //определение пути до драйвера и его настройка
         System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromeDriver"));
 
@@ -31,7 +31,7 @@ public class LoginTest {
         driver.manage().window().maximize();
 
         //задержка на выполнение теста = 10 сек.
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);//неявное ожидание появления элементов на странице
 
         //получение ссылки на страницу входа из файла настроек
         driver.get(ConfProperties.getProperty("loginPage"));
@@ -50,7 +50,7 @@ public class LoginTest {
     }
 
     @AfterClass
-    public  static void tearDown(){
+    public static void tearDown() {
         profilePage.userLogout();
         driver.quit();
     }
