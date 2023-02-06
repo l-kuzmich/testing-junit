@@ -1,4 +1,4 @@
-package org.example;
+package by.step.logbook.tests;
 
 import java.io.FileInputStream;
 import java.io.IOException;
