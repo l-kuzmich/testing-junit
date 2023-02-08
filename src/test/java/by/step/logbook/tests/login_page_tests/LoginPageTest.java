@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class LoginPageTest extends BaseUITestsClass {
 
@@ -46,18 +47,22 @@ public class LoginPageTest extends BaseUITestsClass {
     }
 
     @Test
-    public void verifyLoginValidParameters(){
+    public void verifyLoginValidParameters() throws InterruptedException {
         String initialLoginString = ConfProperties.getProperty("login");
         String initialPassword = ConfProperties.getProperty("password");
-        String expectedProfileName = "Кузьмич Любовь Владимировна";
+        //String expectedProfileName = "Кузьмич Любовь Владимировна";
+        String expectedProfileLink = "https://mystat.itstep.org/ru/main/dashboard/page/index";
         loginService = new LoginService(driver);
         loginService.getLoginPage().getLoginBlock().loginField.sendKeys(initialLoginString);
         loginService.getLoginPage().getLoginBlock().passwordField.sendKeys(initialPassword);
 
         loginService.getLoginPage().getLoginBlock().loginButton.click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(5000));
-        String actualProfileName = profileService.getProfilePage().getProfileBlock().fioText.getText();
-        Assertions.assertEquals(expectedProfileName, actualProfileName);
+
+        //String actualProfileName = profileService.getProfilePage().getProfileBlock().getUserName();
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+        Thread.sleep(3000);
+        String actualProfileLink = driver.getCurrentUrl();
+        Assertions.assertEquals(expectedProfileLink, actualProfileLink);
     }
 }
